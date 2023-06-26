@@ -7,15 +7,22 @@
 
 import SwiftUI
 
+var platforms : [Platform] = [
+    .init(name: "Xbox", imageName: "xbox.logo", color: .green),
+    .init(name: "PlayStation", imageName: "playstation.logo", color: .indigo),
+    .init(name: "PC", imageName: "pc", color: .pink),
+    .init(name: "Mobile", imageName: "iphone", color: .mint)]
+
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        List {
+            Section("PLatform"){
+                ForEach(platforms, id: \.name){ platform in
+                    Label(platform.name, systemImage: platform.imageName)
+                        .foregroundColor(platform.color)
+                }
+            }
         }
-        .padding()
     }
 }
 
