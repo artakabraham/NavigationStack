@@ -15,13 +15,18 @@ var platforms : [Platform] = [
 
 struct ContentView: View {
     var body: some View {
-        List {
-            Section("PLatform"){
-                ForEach(platforms, id: \.name){ platform in
-                    Label(platform.name, systemImage: platform.imageName)
-                        .foregroundColor(platform.color)
+        NavigationStack{
+            List {
+                Section("PLatform"){
+                    ForEach(platforms, id: \.name){ platform in
+                        NavigationLink(value: platform) {
+                            Label(platform.name, systemImage: platform.imageName)
+                                .foregroundColor(platform.color)
+                        }
+                    }
                 }
             }
+            .navigationTitle("Gaming")
         }
     }
 }
